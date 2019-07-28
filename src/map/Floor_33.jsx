@@ -1,7 +1,7 @@
 import React from 'react';
 import { OverlayTrigger } from 'react-bootstrap';
 
-import ReservePopover from '../pages/reserve/ReservePopover';
+import ReservePopover from '../page/reserve/ReservePopover';
 
 const Floor33 = (props) => {
 

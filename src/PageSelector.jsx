@@ -1,6 +1,6 @@
 import React from 'react';
-import ReservePage from './pages/reserve/ReservePage';
-import AdminPage from './pages/admin/AdminPage';
+import ReservePage from './page/reserve/ReservePage';
+import AdminPage from './page/admin/AdminPage';
 import { ADMIN } from './Constants';
 
 
