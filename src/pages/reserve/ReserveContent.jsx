@@ -1,6 +1,6 @@
 import React from 'react';
 import ReserveModal from './ReserveModal';
-import Floor33 from '../../maps/Floor_33';
+import Floor33 from '../../map/Floor_33';
 
 class ReserveContent extends React.Component {
 
