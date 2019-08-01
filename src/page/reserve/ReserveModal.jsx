@@ -2,10 +2,10 @@ import React from 'react';
 import { Modal, Container, Row, Col, Button } from 'react-bootstrap';
 
 const ReserveModal = (props) => {
-
+    
     return (
-
-        <Modal show={props.open} aria-labelledby="contained-modal-title-vcenter" onHide={props.close}>
+        
+        <Modal show={props.iShowModal} aria-labelledby="contained-modal-title-vcenter" onHide={props.closeModal}>
 
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
@@ -39,7 +39,7 @@ const ReserveModal = (props) => {
             </Modal.Body>
 
             <Modal.Footer>
-                <Button onClick={props.close}>Close</Button>
+                <Button onClick={props.closeModal}>Close</Button>
             </Modal.Footer>
             
         </Modal>
