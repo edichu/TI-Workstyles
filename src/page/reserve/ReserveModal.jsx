@@ -41,10 +41,10 @@ const assembleElements = (props) => {
         hour = hour + ':00H';
 
         let isFound = false;
-        if (props.seatStatus.reservations) {
 
+        if (props.seatStatus.reservations) {
             for (const [index, element] of props.seatStatus.reservations.entries()) {
-                if (index === i) {
+                if (parseInt(element.time_slot) === i) {
                     elements.push(
                         <Row key={i}>
                             <Col>
