@@ -52,7 +52,7 @@ class Floor33 extends React.Component {
                     x="73.327377"
                     y="73.994049" alt="Edito" />
     
-                <OverlayTrigger trigger="hover" placement="auto" delay={{ show: 100, hide: 300 }} overlay={ReserveOverlay(this.props.seatStatus)}>
+                <OverlayTrigger trigger="hover" placement="auto" delay={{ show: 0, hide: 100 }} overlay={ReserveOverlay(this.props.seatStatus)}>
                     <circle
                         id="S1"
                         cx="125"
@@ -63,7 +63,7 @@ class Floor33 extends React.Component {
                     />
                 </OverlayTrigger>
     
-                <OverlayTrigger trigger="hover" placement="auto" delay={{ show: 100, hide: 300 }} overlay={ReserveOverlay(this.props.seatStatus)}>
+                <OverlayTrigger trigger="hover" placement="auto" delay={{ show: 0, hide: 100 }} overlay={ReserveOverlay(this.props.seatStatus)}>
                     <circle
                         id="S2"
                         cx="60"

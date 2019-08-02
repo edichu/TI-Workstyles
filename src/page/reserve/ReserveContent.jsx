@@ -4,14 +4,14 @@ import Floor33 from '../../map/Floor_33';
 
 class ReserveContent extends React.Component {
 
-    state = { iShowModal: false };
+    state = { iShowModal: false, seat: { seat_name: '' } };
 
     selectSeat = (e) => {
         // alert(e.target);
         // let e = document.getElementById("rect");
         // e.target.setAttributeNS(null, 'x', 850);
         // e.target.setAttributeNS(null, 'cx', 150);
-        this.setState({ iShowModal: true, seat: {} });
+        this.setState({ iShowModal: true });
         
     }
 
@@ -48,6 +48,7 @@ class ReserveContent extends React.Component {
                 <ReserveModal
                     iShowModal={this.state.iShowModal}
                     closeModal={this.closeModal}
+                    seatStatus={this.state.seat}
                 />
             </div>
 
