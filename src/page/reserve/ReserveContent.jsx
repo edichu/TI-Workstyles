@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import ReserveModal from './ReserveModal';
 import Floor33 from '../../map/Floor_33';
 
@@ -16,7 +18,7 @@ class ReserveContent extends React.Component {
     }
 
     viewSeatStatus = (id) => {
-        const requestUrl = 'http://localhost:5000/seats/ADS/' + id;
+        const requestUrl = 'http://localhost:5000/seats/ADS/' + id + '/' + this.props.selectedDate.format('YYYY-MM-DD');
 
         fetch(requestUrl, {
             method: 'get'
@@ -35,9 +37,7 @@ class ReserveContent extends React.Component {
     }
 
     render() {
-
         return (
-
             <div>
                 <Floor33
                     selectSeat={this.selectSeat}
@@ -51,9 +51,15 @@ class ReserveContent extends React.Component {
                     seatStatus={this.state.seat}
                 />
             </div>
-
         )
     }
 }
 
-export default ReserveContent;
+// We map the store's state here to "this.props" object.
+const mapStateToProps = (state) => {
+    return {
+        selectedDate: state.dateSelectReducer.selectedDate
+    }
+}
+
+export default connect(mapStateToProps)(ReserveContent);

@@ -31,7 +31,7 @@ class RootContainer extends React.Component {
 // We map the store's state here to "this.props" object.
 const mapStateToProps = (state) => {
     return {
-        // "isReserve" key found here will be used as "this.props.isReserve" in this component.
+        // "page" key found here will be used as "this.props.page" in this component.
         page: state.pageSelectReducer.page
     };
 }
