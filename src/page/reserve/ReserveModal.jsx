@@ -11,7 +11,7 @@ const ReserveModal = (props) => {
 
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    {props.seatStatus.seat_name} Reservation
+                    Reserve {props.seatStatus.map}-{props.seatStatus.seat_name}
                 </Modal.Title>
             </Modal.Header>
 
@@ -22,6 +22,7 @@ const ReserveModal = (props) => {
             </Modal.Body>
 
             <Modal.Footer>
+                <Button onClick={props.closeModal}>Submit</Button>
                 <Button onClick={props.closeModal}>Close</Button>
             </Modal.Footer>
             
@@ -72,10 +73,10 @@ const assembleElements = (props) => {
                         <div align="left">{hour}</div>
                     </Col>
                     <Col>
-                        <div align="center">-</div>
+                        <div align="center">-avail-</div>
                     </Col>
                     <Col align="right">
-                        <input type="checkbox" name="vehicle1" value="Bike" />
+                        <input type="checkbox" />
                     </Col>
                 </Row>
             );

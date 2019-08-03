@@ -7,10 +7,8 @@ const ReserveOverlay = (props) => {
 
         const elements = assembleElements(props);
 
-        const title = props.seat_name + ' availability'
-
         return (
-            <Popover id="popover" title={title}>
+            <Popover id="popover">
                 <Container>
                     {elements}
                 </Container>
@@ -34,7 +32,7 @@ const assembleElements = (props) => {
         hour = hour + ':00H';
 
         let isFound = false;
-        
+
         if (props.reservations) {
             for (const [index, element] of props.reservations.entries()) {
                 if (parseInt(element.time_slot) === i) {
@@ -62,7 +60,7 @@ const assembleElements = (props) => {
                         <div align="left">{hour}</div>
                     </Col>
                     <Col>
-                        <div align="center">-</div>
+                        <div align="center">-avail-</div>
                     </Col>
                 </Row>
             );
