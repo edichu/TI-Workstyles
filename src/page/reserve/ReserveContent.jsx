@@ -6,19 +6,18 @@ import Floor33 from '../../map/Floor_33';
 
 class ReserveContent extends React.Component {
 
-    state = { iShowModal: false, seat: { seat_name: '' } };
+    state = { iShowModal: false, seat: { seat_name: '' }, slot: [] };
 
-    selectSeat = (e) => {
+    showModal = (event) => {
         // alert(e.target);
         // let e = document.getElementById("rect");
         // e.target.setAttributeNS(null, 'x', 850);
         // e.target.setAttributeNS(null, 'cx', 150);
         this.setState({ iShowModal: true });
-        
     }
 
-    viewSeatStatus = (id) => {
-        const requestUrl = 'http://localhost:5000/seats/ADS/' + id + '/' + this.props.selectedDate.format('YYYY-MM-DD');
+    viewOverlay = (event) => {
+        const requestUrl = 'http://localhost:5000/seats/ADS/' + event.target.id + '/' + this.props.selectedDate.format('YYYY-MM-DD');
 
         fetch(requestUrl, {
             method: 'get'
@@ -40,8 +39,8 @@ class ReserveContent extends React.Component {
         return (
             <div>
                 <Floor33
-                    selectSeat={this.selectSeat}
-                    viewSeatStatus={this.viewSeatStatus}
+                    showModal={this.showModal}
+                    viewOverlay={this.viewOverlay}
                     seatStatus={this.state.seat}
                 />
 

@@ -1,89 +1,98 @@
 import React from 'react';
 import { Modal, Container, Row, Col, Button } from 'react-bootstrap';
 
-const ReserveModal = (props) => {
+class ReserveModal extends React.Component {
 
-    let elements = assembleElements(props);
-    
-    return (
-        
-        <Modal show={props.iShowModal} aria-labelledby="contained-modal-title-vcenter" onHide={props.closeModal}>
+    state = {};
 
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    Reserve {props.seatStatus.map}-{props.seatStatus.seat_name}
-                </Modal.Title>
-            </Modal.Header>
+    selectTimeSlot = (event) => {
+        alert('selectTimeSlot: ' + event.target.id);
+    }
 
-            <Modal.Body>
-                <Container>
-                    {elements}
-                </Container>
-            </Modal.Body>
+    requestSeatReservation = () => {
+        alert('reserveSeat');
+    }
 
-            <Modal.Footer>
-                <Button onClick={props.closeModal}>Submit</Button>
-                <Button onClick={props.closeModal}>Close</Button>
-            </Modal.Footer>
-            
-        </Modal>
-    )
-}
+    render() {
 
-const assembleElements = (props) => {
-    
-    let elements = [];
+        let elements = [];
 
-    for (let i = 0; i < 24; i++) {
-        let hour = '' + i;
-        if (hour.length < 2) {
-            hour = '0' + hour;
-        }
-        hour = hour + ':00H';
+        for (let i = 0; i < 24; i++) {
+            let hour = '' + i;
+            if (hour.length < 2) {
+                hour = '0' + hour;
+            }
+            hour = hour + ':00H';
 
-        let isFound = false;
+            let isFound = false;
 
-        if (props.seatStatus.reservations) {
-            for (const [index, element] of props.seatStatus.reservations.entries()) {
-                if (parseInt(element.time_slot) === i) {
-                    elements.push(
-                        <Row key={i}>
-                            <Col>
-                                <div align="left">{hour}</div>
-                            </Col>
-                            <Col>
-                                <div align="center">{element.occupant}</div>
-                            </Col>
-                            <Col align="right">
-                                <input type="checkbox" name="vehicle1" checked disabled/>
-                            </Col>
-                        </Row>
-                    );
-                    isFound = true;
+            if (this.props.seatStatus.reservations) {
+                for (const [index, element] of this.props.seatStatus.reservations.entries()) {
+                    console.trace(index);
+                    if (parseInt(element.time_slot) === i) {
+                        elements.push(
+                            <Row key={i}>
+                                <Col>
+                                    <div align="left">{hour}</div>
+                                </Col>
+                                <Col>
+                                    <div align="center">{element.occupant}</div>
+                                </Col>
+                                <Col align="right">
+                                    <input type="checkbox" name="vehicle1" checked disabled />
+                                </Col>
+                            </Row>
+                        );
+                        isFound = true;
 
-                    break;
+                        break;
+                    }
                 }
+            }
+
+            if (!isFound) {
+                let id = 'slot_' + i;
+                elements.push(
+                    <Row key={i}>
+                        <Col>
+                            <div align="left">{hour}</div>
+                        </Col>
+                        <Col>
+                            <div align="center">-avail-</div>
+                        </Col>
+                        <Col align="right" >
+                            <input type="checkbox" id={id} onChange={this.selectTimeSlot} />
+                        </Col>
+                    </Row>
+                );
             }
         }
 
-        if (!isFound) {
-            elements.push(
-                <Row key={i}>
-                    <Col>
-                        <div align="left">{hour}</div>
-                    </Col>
-                    <Col>
-                        <div align="center">-avail-</div>
-                    </Col>
-                    <Col align="right">
-                        <input type="checkbox" />
-                    </Col>
-                </Row>
-            );
-        }
-    }
+        return (
 
-    return elements;
+            <Modal show={this.props.iShowModal} aria-labelledby="contained-modal-title-vcenter" onHide={this.props.closeModal}>
+
+                <Modal.Header closeButton>
+                    <Modal.Title id="contained-modal-title-vcenter">
+                        Reserve {this.props.seatStatus.map}-{this.props.seatStatus.seat_name}
+                    </Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                    <Container>
+                        {elements}
+                    </Container>
+                </Modal.Body>
+
+                <Modal.Footer>
+                    <Button onClick={this.requestSeatReservation}>Submit</Button>
+                    <Button onClick={this.props.closeModal}>Close</Button>
+                </Modal.Footer>
+
+            </Modal>
+        )
+
+    }
 }
 
 export default ReserveModal;

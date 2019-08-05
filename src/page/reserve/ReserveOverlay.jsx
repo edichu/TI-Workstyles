@@ -35,6 +35,7 @@ const assembleElements = (props) => {
 
         if (props.reservations) {
             for (const [index, element] of props.reservations.entries()) {
+                console.trace(index);
                 if (parseInt(element.time_slot) === i) {
                     elements.push(
                         <Row key={i}>

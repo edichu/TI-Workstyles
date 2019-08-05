@@ -6,10 +6,6 @@ import ReserveOverlay from '../page/reserve/ReserveOverlay';
 
 class Floor33 extends React.Component {
 
-    handleViewSeatStatus = (event) => {
-        this.props.viewSeatStatus(event.target.id);
-    }
-
     render() {
 
         return (
@@ -58,8 +54,8 @@ class Floor33 extends React.Component {
                         cx="125"
                         cy="85"
                         r="5"
-                        onClick={this.props.selectSeat}
-                        onMouseEnter={this.handleViewSeatStatus}
+                        onClick={this.props.showModal}
+                        onMouseEnter={this.props.viewOverlay}
                     />
                 </OverlayTrigger>
     
@@ -69,8 +65,8 @@ class Floor33 extends React.Component {
                         cx="60"
                         cy="85"
                         r="5"
-                        onClick={this.props.selectSeat}
-                        onMouseEnter={this.handleViewSeatStatus}
+                        onClick={this.props.showModal}
+                        onMouseEnter={this.props.viewOverlay}
                     />
                 </OverlayTrigger>
             </svg>
